@@ -2,12 +2,16 @@
   "name": "eslint-plugin-scissors",
   "version": "0.0.1",
   "description": "detects long call chains/nested expressions",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MechanicianW/eslint-plugin-scissors.git"
+  },
   "keywords": [
     "eslint",
     "eslintplugin",
     "eslint-plugin"
   ],
-  "author": "wangyilin06",
+  "author": "wangyilin06 <wangyilinchn@foxmail.com> (https://github.com/MechanicianW)",
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha tests --recursive"
@@ -19,5 +23,9 @@
   "engines": {
     "node": ">=0.10.0"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MechanicianW/eslint-plugin-scissors/issues"
+  },
+  "homepage": "https://github.com/MechanicianW/eslint-plugin-scissors#readme"
 }
