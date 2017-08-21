@@ -1,2 +1,2 @@
 # eslint-plugin-scissors
-detects long call chains/nested expressions
+👮🏻detects long call chains/nested expressions✂️

@@ -1,0 +1,23 @@
+{
+  "name": "eslint-plugin-scissors",
+  "version": "0.0.0",
+  "description": "detects long call chains/nested expressions",
+  "keywords": [
+    "eslint",
+    "eslintplugin",
+    "eslint-plugin"
+  ],
+  "author": "wangyilin06",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha tests --recursive"
+  },
+  "devDependencies": {
+    "eslint": "~3.9.1",
+    "mocha": "^3.5.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "license": "ISC"
+}
