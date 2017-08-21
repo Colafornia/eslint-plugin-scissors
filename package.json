@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-scissors",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "detects long call chains/nested expressions",
   "keywords": [
     "eslint",
