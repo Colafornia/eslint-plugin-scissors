@@ -18,6 +18,7 @@ $ npm install eslint-plugin-scissors --save-dev
 
 ## Configuration
 Then add a reference to this plugin and selected rules in your eslint config:
+
 ```json
 {
   "plugins": [
@@ -28,5 +29,59 @@ Then add a reference to this plugin and selected rules in your eslint config:
   }
 }
 ```
+
+**Tips**: If you want to lint the '.vue' file, you need to import [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue):
+
+```json
+  "plugins": [
+    "vue",
+    "scissors"
+  ],
+```
+
 See [Configuring Eslint](http://eslint.org/docs/user-guide/configuring) on [eslint.org](http://eslint.org) for more info.
 
+## Recomended Usage
+The first run, you're likely to receive a lot of warnings.
+The possibility of dealing with all risks at once is very small, so suggest that you run eslint only on changes files using [pre-commit](https://github.com/observing/pre-commit) and [lint-staged](https://github.com/okonet/lint-staged):
+
+```json
+"scripts": {
+  "check-commit": "eslint",
+  "lint-staged": "lint-staged"
+},
+"lint-staged": {
+  "*.js": ["check-commit"],
+  "*.vue": ["check-commit"]
+},
+"pre-commit": [
+  "lint-staged"
+]
+```
+
+If you use [eslint-loader](https://github.com/MoOx/eslint-loader) in webpack, suggest that you set **quiet** option:
+
+```javascript
+module.exports = {
+  entry: "...",
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: "eslint-loader",
+        options: {
+          quiet: true,
+        }
+      },
+    ],
+  },
+}
+```
+
+## Contributing
+1. Fork it!
+2. Create your feature branch: git checkout -b my-new-feature
+3. Commit your changes: git commit -am 'Add some feature'
+4. Push to the branch: git push origin my-new-feature
+5. Submit a pull request :D
