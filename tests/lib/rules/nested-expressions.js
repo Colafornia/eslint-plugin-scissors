@@ -17,8 +17,7 @@ ruleTester.run('nested-expressions', rule, {
                     var subEvent = a.b.c;
             })`,
             errors: [{
-                message: "would cause NPE error",
-                type: 'ExpressionStatement'
+                message: "a.b could be null, would cause NullReferenceException error"
             }]
         }
     ]
