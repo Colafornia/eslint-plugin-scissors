@@ -19,6 +19,16 @@ ruleTester.run('nested-expressions', rule, {
                 this.privilege.download = res.data.download;
                 this.privilege.search = res.data.select;
             }
+        });`,
+        `API.getApi()
+        .then(function (res) {
+            try {
+                this.privilege.add = res.data.add;
+                this.privilege.download = res.data.download;
+                this.privilege.search = res.data.select;
+            } catch (e) {
+                // blabla
+            }
         });`
     ],
     invalid: [
