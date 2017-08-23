@@ -8,6 +8,9 @@ ruleTester.run('nested-expressions', rule, {
             .then(function (events) {
                 var subEvent = a.b;
         })`,
+        `api.prvseaFocus(query).$promise.then(function (events) {
+                var subEvent = a.b;
+        })`,
         `this.getList({type: 1})
             .then(function (events) {
                 var subEvent = a.b ? a.b.c : {}
@@ -29,19 +32,39 @@ ruleTester.run('nested-expressions', rule, {
             } catch (e) {
                 // blabla
             }
-        });`
+        });`,
+        `API.getApi()
+        .then(function (res) {
+            if (res.data) {
+                this.privilege.add = res.data.add;
+                this.privilege.download = res.data.download;
+                this.privilege.search = res.data.select;
+            }
+        });`,
+        `this.getApi()
+            .then(function (res) {
+                if (res.status === 0) {
+                    this.rules = res.data && res.data.length ? res.data : [];
+                }
+            })`,
+        `this.getApi()
+            .then(function (res) {
+                if (res.status === 0) {
+                    this.rules = res.data && res.status && res.data.length ? res.data : [];
+                }
+            })`
     ],
     invalid: [
         {
             code: `this.getList({type: 1})
                 .then(function (events) {
                     var subEvent = a.b.c;
-            })`,
+                })`,
             errors: [{
                 message: "a.b could be null, would cause NullReferenceException error"
             }]
         },{
-            code:`API.getApiV1()
+            code: `API.getApiV1()
                 .then(function (res) {
                         this.privilege.add = res.data.add;
                         this.privilege.download = res.data.download;
@@ -54,6 +77,16 @@ ruleTester.run('nested-expressions', rule, {
             },{
                 message: "res.data could be null, would cause NullReferenceException error"
             }]
+        },{
+            code: `this.getApi()
+                .then(function (res) {
+                    if (res.status === 0) {
+                        this.rules = res.others && res.status && res.data.length ? res.data : [];
+                    }
+                })`,
+                errors: [{
+                    message: "res.data could be null, would cause NullReferenceException error"
+                }]
         }
     ]
 });
