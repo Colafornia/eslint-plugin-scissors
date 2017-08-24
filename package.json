@@ -14,7 +14,8 @@
   "author": "wangyilin06 <wangyilinchn@foxmail.com> (https://github.com/MechanicianW)",
   "main": "lib/index.js",
   "scripts": {
-    "test": "mocha tests --recursive"
+    "test": "mocha tests --recursive",
+    "debug": "iron-node node_modules/mocha/bin/_mocha --reporter dot tests/"
   },
   "devDependencies": {
     "eslint": "~3.9.1",

@@ -50,9 +50,16 @@ ruleTester.run('nested-expressions', rule, {
         `this.getApi()
             .then(function (res) {
                 if (res.status === 0) {
-                    this.rules = res.data && res.status && res.data.length ? res.data : [];
+                    this.list = res.data && res.status && res.data.length ? res.data : [];
                 }
-            })`
+            })`,
+            `this.getApi()
+                .then(function (res) {
+                    if (res && res.status && res.data && res.data.page) {
+                        this.page = res.data.page;
+                        this.list = res.data.page.list;
+                    }
+            });`
     ],
     invalid: [
         {
