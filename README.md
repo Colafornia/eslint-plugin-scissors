@@ -6,6 +6,56 @@
 
 🙋 say goodbye to 'NullReferenceException' 💣
 
+# Introduction
+The rule named 'nested-expressions' will lint the code in `then/catch` method, throw warning when detect nested expressions that would case NPE error.
+
+🚫 Examples of incorrect code for this rule:
+```javascript
+API.getList()
+    .then(function (res) {
+        this.result.add = res.data.add; // res.data could be null
+     });
+
+API.getList()
+    .then((res) => {
+        if (res.status === 0) {
+            this.result = res.status && res.data.length ? res.data : []; // res.data could be null
+        }
+})
+```
+
+✅ Examples of correct code that have made fault-tolerant:
+```javascript
+API.getList()
+    .then(function (res) {
+        this.result.add = res.data ? res.data.add : {};
+    });
+
+
+API.getList()
+    .then(function (res) {
+        if (res.data) {
+            this.result.add = res.data.add;
+        }
+     });
+
+API.getList()
+    .then(function (res) {
+        try {
+            this.result.add = res.data.add;
+        } catch (e) {
+            // blabla
+        }
+     });
+
+API.getList()
+    .then(function (res) {
+        if (res && res.status && res.data && res.data.page) {
+            this.result.list = res.data.page.list;
+        }
+     });
+```
+
 # Quickstart
 ## Installation
 
@@ -80,6 +130,9 @@ module.exports = {
 ```
 
 ## Contributing
+
+Any issue and PR is super welcome!
+
 1. Fork it!
 2. Create your feature branch: git checkout -b my-new-feature
 3. Commit your changes: git commit -am 'Add some feature'
