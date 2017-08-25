@@ -2,7 +2,7 @@
 [![version](https://img.shields.io/npm/v/eslint-plugin-scissors.svg)](https://www.npmjs.com/package/eslint-plugin-scissors)
 [![NPM downloads](https://img.shields.io/npm/dm/eslint-plugin-scissors.svg)](https://npmjs.com/package/eslint-plugin-scissors) [![Build Status](https://api.travis-ci.org/MechanicianW/eslint-plugin-scissors.svg)](https://travis-ci.org/MechanicianW/eslint-plugin-scissors)
 
-👮🏻 detects long call chains/nested expressions ✂️
+👮🏻 detect long call chains/nested expressions ✂️
 
 🙋 say goodbye to 'NullReferenceException' 💣
 
@@ -86,14 +86,14 @@ Then add a reference to this plugin and selected rules in your eslint config:
   "plugins": [
     "vue",
     "scissors"
-  ],
+  ]
 ```
 
 See [Configuring Eslint](http://eslint.org/docs/user-guide/configuring) on [eslint.org](http://eslint.org) for more info.
 
 ## Recomended Usage
 The first run, you're likely to receive a lot of warnings.
-The possibility of dealing with all risks at once is very small, so suggest that you run eslint only on changes files using [pre-commit](https://github.com/observing/pre-commit) and [lint-staged](https://github.com/okonet/lint-staged):
+dealing with all risks at once is hard, so suggest that you run eslint only on changes files using [pre-commit](https://github.com/observing/pre-commit) and [lint-staged](https://github.com/okonet/lint-staged):
 
 ```json
 "scripts": {

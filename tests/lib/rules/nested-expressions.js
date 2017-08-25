@@ -44,7 +44,7 @@ ruleTester.run('nested-expressions', rule, {
         `this.getApi()
             .then(function (res) {
                 if (res.status === 0) {
-                    this.rules = res.data && res.data.length ? res.data : [];
+                    this.list = res.data && res.data.length ? res.data : [];
                 }
             })`,
         `this.getApi()
@@ -59,7 +59,13 @@ ruleTester.run('nested-expressions', rule, {
                         this.page = res.data.page;
                         this.list = res.data.page.list;
                     }
-            });`
+            });`,
+            `this.getApi()
+                .then(function (res) {
+                    if (!res.data || !res.data.info) {
+                        this.list = [];
+                    }
+                })`
     ],
     invalid: [
         {
