@@ -65,6 +65,19 @@ ruleTester.run('nested-expressions', rule, {
                     if (!res.data || !res.data.info) {
                         this.list = [];
                     }
+            })`,
+            `if (this.info && this.info.id) {
+                    this.getApi(this.info.id).then(function (res) {
+                        this.id = res;
+                    });
+            }`,
+            `this.getApi()
+                .then(function (res) {
+                    if (res && res.status === 0 && res.data && res.data.page) {
+                        this.list = res.data.dataList || [];
+                        this.page.count = res.data.page.totalCount;
+                        this.page.no = res.data.page.pageNo;
+                    }
                 })`
     ],
     invalid: [
