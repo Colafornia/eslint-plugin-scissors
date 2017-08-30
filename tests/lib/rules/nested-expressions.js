@@ -120,6 +120,16 @@ ruleTester.run('nested-expressions', rule, {
                 errors: [{
                     message: "res.data could be null, would cause NullReferenceException error"
                 }]
+        },{
+            code: `this.getApi()
+                .then(function (res) {
+                    if (res.status === 0) {
+                        this.rules.push(res.data.page)
+                    }
+                })`,
+                errors: [{
+                    message: "res.data could be null, would cause NullReferenceException error"
+                }]
         }
     ]
 });
