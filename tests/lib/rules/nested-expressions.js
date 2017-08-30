@@ -78,7 +78,14 @@ ruleTester.run('nested-expressions', rule, {
                         this.page.count = res.data.page.totalCount;
                         this.page.no = res.data.page.pageNo;
                     }
-                })`
+                })`,
+                ` this.getApi()
+                    .then(function (objects) {
+                        var object = this.target ? this.target.object : {};
+                        if (!object) {
+                            this.target.object = this.objects && this.objects[0] ? this.objects[0] : {};
+                        }
+                    })`
     ],
     invalid: [
         {
