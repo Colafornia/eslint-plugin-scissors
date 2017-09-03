@@ -117,9 +117,9 @@ ruleTester.run('nested-expressions', rule, {
                         this.rules = res.others && res.status && res.data.length ? res.data : [];
                     }
                 })`,
-                errors: [{
-                    message: "res.data could be null, would cause NullReferenceException error"
-                }]
+            errors: [{
+                message: "res.data could be null, would cause NullReferenceException error"
+            }]
         },{
             code: `this.getApi()
                 .then(function (res) {
@@ -127,9 +127,21 @@ ruleTester.run('nested-expressions', rule, {
                         this.rules.push(res.data.page)
                     }
                 })`,
-                errors: [{
-                    message: "res.data could be null, would cause NullReferenceException error"
-                }]
+            errors: [{
+                message: "res.data could be null, would cause NullReferenceException error"
+            }]
+        },{
+            code: `this.getApi()
+                .then(function (data) {
+                    if (data.status && data.status.code === 0) {
+                        this.result = data.data || {};
+                    } else {
+                        alert(data.data || data.status.value || 'error');
+                    }
+                });`,
+            errors: [{
+                message: "data.status could be null, would cause NullReferenceException error"
+            }]
         }
     ]
 });
