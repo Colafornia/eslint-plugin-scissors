@@ -85,7 +85,15 @@ ruleTester.run('nested-expressions', rule, {
                         if (!object) {
                             this.target.object = this.objects && this.objects[0] ? this.objects[0] : {};
                         }
-                    })`
+                    })`,
+                    `this.getApi()
+                        .then(function (res) {
+                            if (res && res.status === 0) {
+                                if (res.data && res.data.list && res.data.list.length) {
+                                    this.result = res.data.list[0]
+                                }
+                            }
+                        })`
     ],
     invalid: [
         {
