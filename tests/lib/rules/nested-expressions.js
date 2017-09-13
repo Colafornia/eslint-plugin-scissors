@@ -93,7 +93,16 @@ ruleTester.run('nested-expressions', rule, {
                                     this.result = res.data.list[0]
                                 }
                             }
-                        })`
+                        })`,
+                        `this.getApi()
+                            .then(function (data) {
+                                for (var i = 0, len = data.length; i < len; i++) {
+                                    if (data[i] && data[i].id === regionId) {
+                                        result = data[i].members;
+                                        break;
+                                    }
+                                }
+                            })`
     ],
     invalid: [
         {
