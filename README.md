@@ -69,7 +69,7 @@ $ npm install eslint-plugin-scissors --save-dev
 ## Configuration
 Then add a reference to this plugin and selected rules in your eslint config:
 
-```json
+```javascript
 {
   "plugins": [
     "scissors"
@@ -81,11 +81,11 @@ Then add a reference to this plugin and selected rules in your eslint config:
 }
 ```
 
-If you make sure that some variables using is **absolutely safe**(of course, thers is no absolutely safe in development🙂), you can add these to white list to skip the plugin check:
+If you make sure that some variables using is **absolutely safe**(of course, there is no absolutely safe in development🙂), you can add these to white list to skip the plugin check:
 
-```json
+```javascript
   "rules": {
-    // if you use Angular.js, maybe skip '$scope' is useful
+    // if you use Angular.js, maybe skipping '$scope' is useful
     "scissors/nested-expressions": [1, { "skip": ['$scope', 'window'] }]
   }
 ```
