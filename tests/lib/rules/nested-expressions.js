@@ -102,6 +102,31 @@ ruleTester.run('nested-expressions', rule, {
                                         break;
                                     }
                                 }
+                            })`,
+                        `this.getApi()
+                            .then(function (data) {
+                            if (res && res.data && res.data.code === 200) {
+                                        this.create({
+                                            className: 'success',
+                                            content: res.data.message
+                                        });
+                                    }
+                            })`,
+                        `this.getApi()
+                            .then(function (data) {
+                                if (data.city) {
+                                    if (someOtherCheck()) {
+                                        this.city = data.city.id;
+                                    }
+                                }
+                            })`,
+                        `this.getApi()
+                            .then(function (res) {
+                                if (res.data && res.data.code === 200 && $scope.list) {
+                                    for (var i = 0; i < $scope.list.length; i++) {
+                                        this.result = $scope.list[0];
+                                    }
+                                }
                             })`
     ],
     invalid: [
