@@ -75,10 +75,22 @@ Then add a reference to this plugin and selected rules in your eslint config:
     "scissors"
   ],
   "rules": {
+    // default setting we recommended
     "scissors/nested-expressions": 1
   }
 }
 ```
+
+If you make sure that some variables using is **absolutely safe**(of course, thers is no absolutely safe in development🙂), you can add these to white list to skip the plugin check:
+
+```json
+  "rules": {
+    // if you use Angular.js, maybe skip '$scope' is useful
+    "scissors/nested-expressions": [1, { "skip": ['$scope', 'window'] }]
+  }
+```
+
+**Note the situation that use of the response value to rewrite the variable, it would cause NPE too.**
 
 **Tips**: If you want to lint the '.vue' file, you need to import [eslint-plugin-vue](https://github.com/vuejs/eslint-plugin-vue):
 
