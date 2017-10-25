@@ -128,13 +128,21 @@ ruleTester.run('nested-expressions', rule, {
                                     }
                                 }
                             })`,
-                        `this.getApi()
-                            .then(function (res) {
-                                if (res && res.data && res.status === 0) {
-                                    $scope.list = res.data.dataList || [];
-                                    $scope.options.totalItems = res.data.total;
-                                }
-                            })`
+                        {
+                            code: `this.getApi()
+                                .then(function (res) {
+                                    $scope.list = this.data[1] || [];
+                                    $scope.page.totalItems = this.data.total.num;
+                                })`,
+                            options:[{skip: ['this']}]
+                        }, {
+                            code: `this.getApi()
+                                .then(function (res) {
+                                    $scope.list = this.data[1].list || [];
+                                    $scope.page.totalItems = this.data.total.num;
+                                })`,
+                            options:[{skip: ['this.data']}]
+                        }
     ],
     invalid: [
         {

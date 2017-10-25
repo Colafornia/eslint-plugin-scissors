@@ -4,7 +4,7 @@
 
 👮🏻 detect long call chains/nested expressions ✂️
 
-🙋 say goodbye to 'NullReferenceException' 💣
+🙋 say goodbye to 'NullPointerError' 💣
 
 # Introduction
 The rule named 'nested-expressions' will lint the code in `then/catch` method, throw warning when detect nested expressions that would case NPE error.
@@ -86,7 +86,7 @@ If you make sure that some variables using is **absolutely safe**(of course, the
 ```javascript
   "rules": {
     // if you use Angular.js, maybe skipping '$scope' is useful
-    "scissors/nested-expressions": [1, { "skip": ['$scope', 'window'] }]
+    "scissors/nested-expressions": [1, { "skip": ['$scope', 'window', 'this.queryForm'] }]
   }
 ```
 
@@ -121,7 +121,7 @@ dealing with all risks at once is hard, so suggest that you run eslint only on c
 ]
 ```
 
-If you use [eslint-loader](https://github.com/MoOx/eslint-loader) in webpack, suggest that you set **quiet** option:
+If you use [eslint-loader](https://github.com/MoOx/eslint-loader) in Webpack, suggest that you set **quiet** option:
 
 ```javascript
 module.exports = {
