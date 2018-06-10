@@ -1,15 +1,21 @@
 # eslint-plugin-scissors
 [![version](https://img.shields.io/npm/v/eslint-plugin-scissors.svg)](https://www.npmjs.com/package/eslint-plugin-scissors)
-[![NPM downloads](https://img.shields.io/npm/dm/eslint-plugin-scissors.svg)](https://npmjs.com/package/eslint-plugin-scissors) [![Build Status](https://api.travis-ci.org/MechanicianW/eslint-plugin-scissors.svg)](https://travis-ci.org/MechanicianW/eslint-plugin-scissors)
+[![NPM downloads](https://img.shields.io/npm/dm/eslint-plugin-scissors.svg)](https://npmjs.com/package/eslint-plugin-scissors) [![Build Status](https://api.travis-ci.org/Colafornia/eslint-plugin-scissors.svg)](https://travis-ci.org/Colafornia/eslint-plugin-scissors)
 
 👮🏻 detect long call chains/nested expressions ✂️
 
 🙋 say goodbye to 'NullPointerError' 💣
 
 # Introduction
+
 The rule named 'nested-expressions' will lint the code in `then/catch` method, throw warning when detect nested expressions that would case NPE error.
 
+The cost of using TypeScript and flow is high for many large, old projects who are struggling with type checking.Scissors✂️ provides non-intrusive type checking designed to expose all hazards at once.
+
+It saves us more than a hundred hours of problem finding time and reduces the number of null pointer errors reported online by nearly 70% over the same period.Hope this will help you too.
+
 🚫 Examples of incorrect code for this rule:
+
 ```javascript
 API.getList()
     .then(function (res) {
