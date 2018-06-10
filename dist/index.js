@@ -20,7 +20,7 @@ if (!global._babelPolyfill) {
 // import all rules in lib/rules
 module.exports.rules = {
     'nested-expressions': nestedExpressions
-}
+};
 
 module.exports.configs = {
     recommended: {
@@ -28,7 +28,4 @@ module.exports.configs = {
             'scissors/nested-expressions': 1
         }
     }
-}
-
-
-
+};
